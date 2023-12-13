@@ -62,7 +62,7 @@ class _InfiniteScrolling1State extends State {
   ChartSeriesController? seriesController;
   late List<ChartSampleData> chartData;
   late bool isLoadMoreView, isNeedToUpdateView, isDataUpdated;
-  double? oldAxisVisibleMin, oldAxisVisibleMax;
+  dynamic oldAxisVisibleMin, oldAxisVisibleMax;
   late ZoomPanBehavior _zoomPanBehavior;
   late GlobalKey<State> globalKey;
   late GlobalKey<State> globalKey1;
@@ -112,8 +112,8 @@ class _InfiniteScrolling1State extends State {
             args.visibleMin = oldAxisVisibleMin;
             args.visibleMax = oldAxisVisibleMax;
           }
-          oldAxisVisibleMin = args.visibleMin as double;
-          oldAxisVisibleMax = args.visibleMax as double;
+          oldAxisVisibleMin = args.visibleMin;
+          oldAxisVisibleMax = args.visibleMax;
         }
         isLoadMoreView = false;
       },
@@ -133,8 +133,8 @@ class _InfiniteScrolling1State extends State {
           interval: 2,
           enableAutoIntervalOnZooming: false,
           // Set the zoomfactor and zoom position values in the x-axis.
-          zoomFactor: zoomF,
-          zoomPosition: zoomP),
+          initialZoomFactor: zoomF,
+          initialZoomPosition: zoomP),
       primaryYAxis: NumericAxis(),
       series: getSeries(),
       loadMoreIndicatorBuilder:
@@ -143,8 +143,8 @@ class _InfiniteScrolling1State extends State {
     );
   }
 
-  List<ChartSeries<ChartSampleData, num>> getSeries() {
-    return <ChartSeries<ChartSampleData, num>>[
+  List<CartesianSeries<ChartSampleData, num>> getSeries() {
+    return <CartesianSeries<ChartSampleData, num>>[
       SplineAreaSeries<ChartSampleData, num>(
         dataSource: chartData,
         color: const Color.fromRGBO(75, 135, 185, 0.6),
@@ -279,7 +279,7 @@ class _InfiniteScrolling2State extends State {
 
   late bool isLoadMoreView, isNeedToUpdateView, isDataUpdated;
 
-  double? oldAxisVisibleMin, oldAxisVisibleMax;
+  dynamic oldAxisVisibleMin, oldAxisVisibleMax;
 
   late ZoomPanBehavior _zoomPanBehavior;
 
@@ -328,8 +328,8 @@ class _InfiniteScrolling2State extends State {
             args.visibleMin = oldAxisVisibleMin;
             args.visibleMax = oldAxisVisibleMax;
           }
-          oldAxisVisibleMin = args.visibleMin as double;
-          oldAxisVisibleMax = args.visibleMax as double;
+          oldAxisVisibleMin = args.visibleMin;
+          oldAxisVisibleMax = args.visibleMax;
         }
         isLoadMoreView = false;
       },
@@ -349,8 +349,8 @@ class _InfiniteScrolling2State extends State {
           interval: 2,
           enableAutoIntervalOnZooming: false,
           // Set the zoomfactor and zoom position values in the x-axis.
-          zoomFactor: zoomF,
-          zoomPosition: zoomP),
+          initialZoomFactor: zoomF,
+          initialZoomPosition: zoomP),
       primaryYAxis: NumericAxis(),
       series: getSeries(),
       loadMoreIndicatorBuilder:
@@ -359,8 +359,8 @@ class _InfiniteScrolling2State extends State {
     );
   }
 
-  List<ChartSeries<ChartSampleData, num>> getSeries() {
-    return <ChartSeries<ChartSampleData, num>>[
+  List<CartesianSeries<ChartSampleData, num>> getSeries() {
+    return <CartesianSeries<ChartSampleData, num>>[
       SplineAreaSeries<ChartSampleData, num>(
         dataSource: chartData,
         color: const Color.fromRGBO(75, 135, 185, 0.6),
